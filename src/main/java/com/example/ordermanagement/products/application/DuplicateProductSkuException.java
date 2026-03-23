@@ -1,6 +1,8 @@
 package com.example.ordermanagement.products.application;
 
-public class DuplicateProductSkuException extends RuntimeException {
+import com.example.ordermanagement.shared.application.exception.BusinessConflictException;
+
+public class DuplicateProductSkuException extends BusinessConflictException {
 
     public DuplicateProductSkuException(String sku) {
         super("Product with sku '" + sku + "' already exists");

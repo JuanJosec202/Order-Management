@@ -1,6 +1,8 @@
 package com.example.ordermanagement.products.application;
 
-public class ProductNotFoundException extends RuntimeException {
+import com.example.ordermanagement.shared.application.exception.ResourceNotFoundException;
+
+public class ProductNotFoundException extends ResourceNotFoundException {
 
     public ProductNotFoundException(Long productId) {
         super("Product with id " + productId + " was not found");

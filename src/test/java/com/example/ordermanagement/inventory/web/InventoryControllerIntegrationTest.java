@@ -70,7 +70,7 @@ class InventoryControllerIntegrationTest {
                                   "amount": 1
                                 }
                                 """))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.message").value("Insufficient stock for product " + productId + ". Available: 0, requested: 1"));
     }
 
