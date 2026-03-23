@@ -40,6 +40,13 @@ public class Order {
         return new Order(null, items, totalAmount, OrderStatus.CREATED, null, null);
     }
 
+    public void markAsPaid() {
+        if (status != OrderStatus.CREATED) {
+            throw new IllegalStateException("order cannot be paid in status " + status);
+        }
+        this.status = OrderStatus.PAID;
+    }
+
     public Long getId() { return id; }
     public List<OrderItem> getItems() { return Collections.unmodifiableList(items); }
     public BigDecimal getTotalAmount() { return totalAmount; }
