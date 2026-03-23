@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: ordermanagement
+
+server:
+  servlet:
+    context-path: /api
