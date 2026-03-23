@@ -15,7 +15,9 @@ public class UserWebMapper {
                 user.getRole(),
                 user.isActive(),
                 user.getCreatedAt(),
-                user.getUpdatedAt()
+                user.getUpdatedAt(),
+                user.getCreatedBy(),
+                user.getUpdatedBy()
         );
     }
 }

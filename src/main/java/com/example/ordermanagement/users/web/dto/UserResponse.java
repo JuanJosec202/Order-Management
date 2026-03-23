@@ -10,6 +10,8 @@ public record UserResponse(
         UserRole role,
         boolean active,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        LocalDateTime updatedAt,
+        String createdBy,
+        String updatedBy
 ) {
 }

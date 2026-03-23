@@ -15,7 +15,9 @@ public class ProductPersistenceMapper {
                 entity.getDescription(),
                 entity.getPrice(),
                 entity.getCreatedAt(),
-                entity.getUpdatedAt()
+                entity.getUpdatedAt(),
+                entity.getCreatedBy(),
+                entity.getUpdatedBy()
         );
     }
 
@@ -28,6 +30,8 @@ public class ProductPersistenceMapper {
         entity.setPrice(product.getPrice());
         entity.setCreatedAt(product.getCreatedAt());
         entity.setUpdatedAt(product.getUpdatedAt());
+        entity.setCreatedBy(product.getCreatedBy());
+        entity.setUpdatedBy(product.getUpdatedBy());
         return entity;
     }
 }

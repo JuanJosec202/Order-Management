@@ -13,6 +13,8 @@ public class Product {
     private BigDecimal price;
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private final String createdBy;
+    private String updatedBy;
 
     public Product(Long id,
                    String sku,
@@ -20,7 +22,9 @@ public class Product {
                    String description,
                    BigDecimal price,
                    LocalDateTime createdAt,
-                   LocalDateTime updatedAt) {
+                   LocalDateTime updatedAt,
+                   String createdBy,
+                   String updatedBy) {
         this.id = id;
         this.sku = requireText(sku, "sku");
         this.name = requireText(name, "name");
@@ -28,10 +32,12 @@ public class Product {
         this.price = requirePrice(price);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
     }
 
     public static Product newProduct(String sku, String name, String description, BigDecimal price) {
-        return new Product(null, sku, name, description, price, null, null);
+        return new Product(null, sku, name, description, price, null, null, null, null);
     }
 
     public void updateDetails(String sku, String name, String description, BigDecimal price) {
@@ -41,33 +47,15 @@ public class Product {
         this.price = requirePrice(price);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
+    public Long getId() { return id; }
+    public String getSku() { return sku; }
+    public String getName() { return name; }
+    public String getDescription() { return description; }
+    public BigDecimal getPrice() { return price; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public String getCreatedBy() { return createdBy; }
+    public String getUpdatedBy() { return updatedBy; }
 
     private static String requireText(String value, String fieldName) {
         if (value == null || value.isBlank()) {

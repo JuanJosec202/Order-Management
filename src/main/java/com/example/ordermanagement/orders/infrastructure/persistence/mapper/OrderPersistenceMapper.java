@@ -12,7 +12,7 @@ public class OrderPersistenceMapper {
 
     public Order toDomain(OrderEntity entity) {
         List<OrderItem> items = entity.getItems().stream().map(this::toDomainItem).toList();
-        return new Order(entity.getId(), items, entity.getTotalAmount(), entity.getStatus(), entity.getCreatedAt(), entity.getUpdatedAt());
+        return new Order(entity.getId(), items, entity.getTotalAmount(), entity.getStatus(), entity.getCreatedAt(), entity.getUpdatedAt(), entity.getCreatedBy(), entity.getUpdatedBy());
     }
 
     public OrderEntity toEntity(Order order) {
@@ -22,6 +22,8 @@ public class OrderPersistenceMapper {
         entity.setStatus(order.getStatus());
         entity.setCreatedAt(order.getCreatedAt());
         entity.setUpdatedAt(order.getUpdatedAt());
+        entity.setCreatedBy(order.getCreatedBy());
+        entity.setUpdatedBy(order.getUpdatedBy());
         entity.setItems(order.getItems().stream().map(orderItem -> toEntityItem(orderItem, entity)).toList());
         return entity;
     }

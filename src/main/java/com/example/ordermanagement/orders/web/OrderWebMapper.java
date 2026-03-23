@@ -20,6 +20,6 @@ public class OrderWebMapper {
                         item.getLineTotal()))
                 .toList();
 
-        return new OrderResponse(order.getId(), items, order.getTotalAmount(), order.getStatus(), order.getCreatedAt(), order.getUpdatedAt());
+        return new OrderResponse(order.getId(), items, order.getTotalAmount(), order.getStatus(), order.getCreatedAt(), order.getUpdatedAt(), order.getCreatedBy(), order.getUpdatedBy());
     }
 }

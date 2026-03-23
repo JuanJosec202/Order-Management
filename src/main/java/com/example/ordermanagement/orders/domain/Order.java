@@ -15,13 +15,17 @@ public class Order {
     private OrderStatus status;
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private final String createdBy;
+    private String updatedBy;
 
     public Order(Long id,
                  List<OrderItem> items,
                  BigDecimal totalAmount,
                  OrderStatus status,
                  LocalDateTime createdAt,
-                 LocalDateTime updatedAt) {
+                 LocalDateTime updatedAt,
+                 String createdBy,
+                 String updatedBy) {
         if (items == null || items.isEmpty()) {
             throw new IllegalArgumentException("order must contain at least one item");
         }
@@ -31,13 +35,15 @@ public class Order {
         this.status = Objects.requireNonNull(status, "status must not be null");
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
     }
 
     public static Order create(List<OrderItem> items) {
         BigDecimal totalAmount = items.stream()
                 .map(OrderItem::getLineTotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return new Order(null, items, totalAmount, OrderStatus.CREATED, null, null);
+        return new Order(null, items, totalAmount, OrderStatus.CREATED, null, null, null, null);
     }
 
     public void markAsPaid() {
@@ -53,4 +59,6 @@ public class Order {
     public OrderStatus getStatus() { return status; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public String getCreatedBy() { return createdBy; }
+    public String getUpdatedBy() { return updatedBy; }
 }

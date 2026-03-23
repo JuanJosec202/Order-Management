@@ -15,7 +15,9 @@ public class ProductWebMapper {
                 product.getDescription(),
                 product.getPrice(),
                 product.getCreatedAt(),
-                product.getUpdatedAt()
+                product.getUpdatedAt(),
+                product.getCreatedBy(),
+                product.getUpdatedBy()
         );
     }
 }

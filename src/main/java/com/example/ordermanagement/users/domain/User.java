@@ -13,6 +13,8 @@ public class User {
     private boolean active;
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private final String createdBy;
+    private String updatedBy;
 
     public User(Long id,
                 String name,
@@ -21,7 +23,9 @@ public class User {
                 UserRole role,
                 boolean active,
                 LocalDateTime createdAt,
-                LocalDateTime updatedAt) {
+                LocalDateTime updatedAt,
+                String createdBy,
+                String updatedBy) {
         this.id = id;
         this.name = requireText(name, "name");
         this.email = normalizeEmail(email);
@@ -30,6 +34,8 @@ public class User {
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
     }
 
     public static User newUser(String name,
@@ -37,7 +43,7 @@ public class User {
                                String passwordHash,
                                UserRole role,
                                boolean active) {
-        return new User(null, name, email, passwordHash, role, active, null, null);
+        return new User(null, name, email, passwordHash, role, active, null, null, null, null);
     }
 
     public void updateDetails(String name,
@@ -52,37 +58,16 @@ public class User {
         this.active = active;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public String getEmail() { return email; }
+    public String getPasswordHash() { return passwordHash; }
+    public UserRole getRole() { return role; }
+    public boolean isActive() { return active; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public String getCreatedBy() { return createdBy; }
+    public String getUpdatedBy() { return updatedBy; }
 
     private static String requireText(String value, String fieldName) {
         if (value == null || value.isBlank()) {

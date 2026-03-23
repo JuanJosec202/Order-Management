@@ -10,5 +10,7 @@ public record OrderResponse(Long id,
                             BigDecimal totalAmount,
                             OrderStatus status,
                             LocalDateTime createdAt,
-                            LocalDateTime updatedAt) {
+                            LocalDateTime updatedAt,
+                            String createdBy,
+                            String updatedBy) {
 }

@@ -16,7 +16,9 @@ public class UserPersistenceMapper {
                 entity.getRole(),
                 entity.isActive(),
                 entity.getCreatedAt(),
-                entity.getUpdatedAt()
+                entity.getUpdatedAt(),
+                entity.getCreatedBy(),
+                entity.getUpdatedBy()
         );
     }
 
@@ -30,6 +32,8 @@ public class UserPersistenceMapper {
         entity.setActive(user.isActive());
         entity.setCreatedAt(user.getCreatedAt());
         entity.setUpdatedAt(user.getUpdatedAt());
+        entity.setCreatedBy(user.getCreatedBy());
+        entity.setUpdatedBy(user.getUpdatedBy());
         return entity;
     }
 }
