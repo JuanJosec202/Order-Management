@@ -5,7 +5,7 @@ import com.example.ordermanagement.users.domain.UserRole;
 public record UpdateUserCommand(
         String name,
         String email,
-        String passwordHash,
+        String password,
         UserRole role,
         boolean active
 ) {

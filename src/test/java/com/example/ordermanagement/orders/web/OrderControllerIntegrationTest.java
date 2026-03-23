@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -29,6 +30,7 @@ class OrderControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Test
+    @WithMockUser(roles = "OPERATOR")
     void shouldCreateOrderAndDiscountInventory() throws Exception {
         long productId = createProduct("sku-order-001", "Desk Chair", 450.00);
         increaseStock(productId, 5);
@@ -65,6 +67,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
+    @WithMockUser(roles = "OPERATOR")
     void shouldRejectOrderWhenStockIsInsufficient() throws Exception {
         long productId = createProduct("sku-order-002", "Standing Desk", 1200.00);
         increaseStock(productId, 1);

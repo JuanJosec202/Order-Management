@@ -2,12 +2,12 @@ package com.example.ordermanagement.users.web;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Locale;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -30,16 +30,17 @@ class UserControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     void shouldCreateAndRetrieveUsersWithoutExposingPasswordHash() throws Exception {
-        String payload = String.format(Locale.US, """
+        String payload = """
                 {
-                  "name": "%s",
-                  "email": "%s",
-                  "passwordHash": "%s",
-                  "role": "%s",
-                  "active": %s
+                  "name": "Admin User",
+                  "email": "admin@example.com",
+                  "password": "Password123",
+                  "role": "ADMIN",
+                  "active": true
                 }
-                """, "Admin User", "admin@example.com", "$2a$10$example.hash.value", "ADMIN", "true");
+                """;
 
         MvcResult result = mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -51,6 +52,7 @@ class UserControllerIntegrationTest {
                 .andExpect(jsonPath("$.role").value("ADMIN"))
                 .andExpect(jsonPath("$.active").value(true))
                 .andExpect(jsonPath("$.passwordHash").doesNotExist())
+                .andExpect(jsonPath("$.password").doesNotExist())
                 .andReturn();
 
         JsonNode createdUser = objectMapper.readTree(result.getResponse().getContentAsString());
@@ -59,6 +61,7 @@ class UserControllerIntegrationTest {
         mockMvc.perform(get("/users/" + userId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(userId))
-                .andExpect(jsonPath("$.passwordHash").doesNotExist());
+                .andExpect(jsonPath("$.passwordHash").doesNotExist())
+                .andExpect(jsonPath("$.password").doesNotExist());
     }
 }

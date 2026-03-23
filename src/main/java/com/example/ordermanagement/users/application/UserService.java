@@ -2,6 +2,7 @@ package com.example.ordermanagement.users.application;
 
 import com.example.ordermanagement.users.domain.User;
 import java.util.List;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -25,7 +28,7 @@ public class UserService {
         User user = User.newUser(
                 command.name(),
                 normalizedEmail,
-                command.passwordHash(),
+                passwordEncoder.encode(command.password()),
                 command.role(),
                 command.active()
         );
@@ -55,7 +58,7 @@ public class UserService {
         user.updateDetails(
                 command.name(),
                 normalizedEmail,
-                command.passwordHash(),
+                passwordEncoder.encode(command.password()),
                 command.role(),
                 command.active()
         );

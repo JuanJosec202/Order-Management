@@ -35,7 +35,7 @@ public class UserController {
         UserResponse response = userWebMapper.toResponse(userService.createUser(new CreateUserCommand(
                 request.name(),
                 request.email(),
-                request.passwordHash(),
+                request.password(),
                 request.role(),
                 request.active()
         )));
@@ -45,10 +45,7 @@ public class UserController {
 
     @GetMapping
     public List<UserResponse> listUsers() {
-        return userService.listUsers()
-                .stream()
-                .map(userWebMapper::toResponse)
-                .toList();
+        return userService.listUsers().stream().map(userWebMapper::toResponse).toList();
     }
 
     @GetMapping("/{userId}")
@@ -62,7 +59,7 @@ public class UserController {
         return userWebMapper.toResponse(userService.updateUser(userId, new UpdateUserCommand(
                 request.name(),
                 request.email(),
-                request.passwordHash(),
+                request.password(),
                 request.role(),
                 request.active()
         )));
