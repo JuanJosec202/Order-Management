@@ -30,7 +30,7 @@ public class SecurityConfig {
                         .accessDeniedHandler(accessDeniedHandler)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/health").permitAll()
+                        .requestMatchers("/auth/login", "/health", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/users/**").hasRole("ADMIN")
                         .requestMatchers("/products/**", "/inventory/**", "/orders/**", "/payments/**").hasAnyRole("ADMIN", "OPERATOR")
                         .anyRequest().authenticated()
