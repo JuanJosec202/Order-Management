@@ -2,7 +2,36 @@
 
 API REST para gestion de usuarios, productos, inventario, ordenes y pagos simulados.
 
+Proyecto de portafolio enfocado en mostrar practicas reales de backend con Java y Spring Boot: arquitectura modular, reglas de negocio claras, seguridad con JWT, persistencia relacional, migraciones versionadas y testing automatizado.
+
 El proyecto esta construido como un monolito modular con Spring Boot. La idea es mostrar un backend profesional y mantenible para un sistema de gestion de ordenes e inventario, sin caer en sobreingenieria ni microservicios prematuros.
+
+## Que demuestra este proyecto
+
+- diseno de backend con separacion clara entre dominio, aplicacion, web e infraestructura
+- autenticacion y autorizacion stateless con Spring Security + JWT
+- modelado de flujos de negocio conectados entre productos, inventario, ordenes y pagos
+- persistencia con Spring Data JPA + PostgreSQL
+- control del esquema con Flyway
+- documentacion de API con OpenAPI / Swagger
+- tests unitarios e integration tests para validar comportamiento
+- empaquetado y ejecucion con Maven, Docker y Docker Compose
+
+## Estado para portafolio
+
+Hoy el proyecto ya es presentable como backend portfolio project porque:
+
+- compila y empaqueta correctamente con `mvn verify`
+- tiene suite automatizada pasando
+- expone una API coherente y documentada
+- muestra decisiones tecnicas justificables
+- cubre casos de uso mas alla de un CRUD simple
+
+Limitaciones actuales conocidas:
+
+- no incluye bootstrap automatico del primer usuario administrador
+- el flujo de pago es simulado, no hay integracion con una pasarela real
+- faltan mejoras operativas como paginacion, seeds opcionales y reglas mas finas de autorizacion
 
 ## Objetivo del sistema
 
@@ -31,6 +60,15 @@ El sistema permite:
 - JUnit 5 + Mockito
 - Docker + Docker Compose
 - GitHub Actions
+
+## Validacion tecnica
+
+Validado localmente en este repositorio:
+
+- `mvn test`
+- `mvn verify`
+
+La suite actual cubre autenticacion, inventario, ordenes, pagos, productos y usuarios con una combinacion de unit tests e integration tests.
 
 ## Arquitectura elegida
 
