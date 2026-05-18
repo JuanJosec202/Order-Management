@@ -1,1 +1,3 @@
-target/ 
+target/
+spring-run.out.log
+spring-run.err.log

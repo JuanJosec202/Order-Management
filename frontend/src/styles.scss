@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+:root {
+  color-scheme: light;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  --color-primary: #1E3A8A;
+  --color-success: #16A34A;
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-approved: #22C55E;
+  --color-pending: #FACC15;
+  --color-danger: #DC2626;
+  --color-alert: #F97316;
+  --color-info: #38BDF8;
+  --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.mat-mdc-card {
+  border-radius: 1.25rem !important;
+  border-color: var(--color-border) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.snackbar-success .mat-mdc-snackbar-surface {
+  background: var(--color-success) !important;
+}
+
+.snackbar-error .mat-mdc-snackbar-surface {
+  background: var(--color-danger) !important;
+}
+
+.mat-mdc-unelevated-button.mat-primary,
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+  --mdc-filled-button-container-color: var(--color-primary);
+  --mdc-filled-button-label-text-color: #ffffff;
+}
+
+.mat-mdc-outlined-button {
+  --mdc-outlined-button-outline-color: var(--color-border);
+}
+
+.mat-mdc-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif !important;
+  letter-spacing: 0.01em;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  --mdc-filled-text-field-label-text-font: 'Montserrat', 'Segoe UI', sans-serif;
+  --mdc-outlined-text-field-label-text-font: 'Montserrat', 'Segoe UI', sans-serif;
+  --mdc-filled-text-field-input-text-font: 'Montserrat', 'Segoe UI', sans-serif;
+  --mdc-outlined-text-field-input-text-font: 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.mat-mdc-table,
+.mat-mdc-table * {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif !important;
+}
+
+.mat-mdc-header-row,
+.mdc-data-table__header-row {
+  background: rgba(30, 58, 138, 0.04);
+}
+
+.mat-mdc-header-cell,
+.mdc-data-table__header-cell {
+  color: var(--color-primary) !important;
+  font-weight: 800 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+  border-bottom-color: var(--color-border) !important;
+}
+
+.mat-mdc-cell,
+.mdc-data-table__cell {
+  color: var(--color-text);
+  border-bottom-color: var(--color-border) !important;
+  font-weight: 500;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.mat-mdc-form-field,
+.mat-mdc-form-field *,
+.mat-mdc-select,
+.mat-mdc-select *,
+.mat-mdc-option,
+.mat-mdc-option *,
+input,
+textarea,
+select {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label,
+.mat-mdc-form-field .mdc-floating-label {
+  color: var(--color-text-muted) !important;
+  font-weight: 600 !important;
+}
+
+.mat-mdc-form-field .mat-mdc-input-element,
+.mat-mdc-form-field input,
+.mat-mdc-form-field textarea,
+.mat-mdc-form-field .mat-mdc-select-value-text {
+  color: var(--color-text) !important;
+  font-weight: 500 !important;
+}
+
+.surface-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.section-note {
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
